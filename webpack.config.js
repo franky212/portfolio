@@ -32,7 +32,6 @@ module.exports = {
             chunkFilename: '[id].css'
         } ),
         new HtmlWebpackPlugin( {
-            title: 'Frank Delaguila',
             template: './src/views/index.html',
             inject: true
         } ),

@@ -7,7 +7,7 @@
     "server": "node server.js",
     "webpack": "webpack",
     "start": "webpack-dev-server --open",
-    "build": "webpack && cd ./dist && surge --domain frankdelaguila-dev.surge.sh",
+    "build": "cross-env NODE_ENV=production && webpack && cd ./dist && surge --domain frankdelaguila-dev.surge.sh",
     "deploy": "webpack && cd ./dist && surge --domain frankdelaguila.surge.sh",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -15,6 +15,7 @@
   "license": "ISC",
   "devDependencies": {
     "clean-webpack-plugin": "^3.0.0",
+    "cross-env": "^7.0.2",
     "css-loader": "^4.2.2",
     "express": "^4.17.1",
     "file-loader": "^6.1.0",
