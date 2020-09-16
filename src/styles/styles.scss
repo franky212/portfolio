@@ -1,0 +1,697 @@
+@function circumference($r){
+    $pi: 3.141592653;
+    @return 2*$pi*$r;
+  }
+
+$background-color: #1a1a1d;
+$primary-color: #9c2018;
+$secondary-color: #00CCF9;
+$secondary-color-dark: darken($secondary-color, 50%);
+
+html, body {
+    font-family: 'Roboto', sans-serif;
+    background-color: $background-color;
+    box-sizing: border-box;
+    color: whitesmoke;
+    font-size: 16px;
+    overflow: hidden;
+}
+
+a {
+    &:link {
+        color: $secondary-color;
+    }
+    &:visited {
+        color: $secondary-color-dark;
+    }
+}
+
+section {
+    padding: 8rem 0 8rem 0;
+}
+  
+.fill:before {
+    content: "";
+    position: absolute;
+    background: $background-color;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    transform: translateX( -100% );
+    left: 0;
+    right: 0;
+    top: 0;
+    z-index: -1;
+    border-radius: 2rem;    
+    transition: transform 0.2s ease-in-out;
+}
+  
+.fill:hover:before {
+    transform: translateX( 0 );
+}
+
+.button {
+    position: relative;
+  //display:block;
+    outline: 0;
+    overflow:hidden;
+    background: none;
+    z-index: 1;
+    cursor: pointer;
+}
+
+.container {
+    padding: 0 4rem 0 4rem;
+    margin: 0 auto;
+    max-width: 1920px;
+}
+
+/****************************
+
+MOBILE MENU ANIMATION CSS
+
+****************************/
+
+.header {
+    @media only screen and (min-width: 1024px) {
+        display: none;
+    }
+}
+
+// .nav {
+  
+//     // Toggle Button
+//     &__toggle {
+//         display: inline-block;
+//         position: absolute;
+//         z-index: 10;
+//         padding: 0;
+//         border: 0;
+//         background: transparent;
+//         outline: 0;
+//         right: 15px;
+//         top: 15px;
+//         cursor: pointer;
+//         border-radius: 50%;
+//         transition: background-color .15s linear;
+          
+//         &:hover,
+//         &:focus {
+//             background-color:rgba(0,0,0,.5);
+//         }
+//     }
+        
+//     &__menu {
+//         display: flex;
+//         flex-direction: column;
+//         justify-content: center;
+//         height: var(--screen-height);
+//         position: relative;
+//         z-index: 5;
+//         visibility: hidden;
+//     }
+        
+//     &__item {
+//         opacity: 0;
+//         transition: all .3s cubic-bezier(0.000, 0.995, 0.990, 1.000) .3s;
+//     }
+//     @for $i from 1 through 5 {
+//         &__item:nth-child(#{$i}){
+//             transform: translateY(-40px * $i);
+//         }
+//     }
+        
+//     &__link {
+//         color:white;
+//         display: block;
+//         text-align: center;
+//         text-transform: uppercase;
+//         letter-spacing: 5px;
+//         font-size: 1.25rem;
+//         text-decoration: none;
+//         padding: 1rem;
+          
+//         &:hover,
+//         &:focus {
+//             outline: 0;
+//             background-color:rgba(0,0,0,0.2);
+//         }
+//     }
+
+//     @media only screen and (min-width: 1024px) {
+//         display: none;
+//     }
+// }
+      
+      
+// // ---------------------------
+// // SVG Menu Icon
+// // ---------------------------
+      
+// .menuicon {
+//     display: block;
+//     cursor: pointer;
+//     color: white;
+        
+//     transform: rotate(0deg);
+//     transition: .3s cubic-bezier(0.165, 0.840, 0.440, 1.000); 
+        
+//     &__bar,
+//     &__circle {
+//         fill: none;
+//         stroke: currentColor;
+//         stroke-width: 3;
+//         stroke-linecap: round;
+//     }
+//     &__bar {
+//         transform: rotate(0deg);
+//         transform-origin: 50% 50%;
+//         transition: transform .25s ease-in-out;
+//     }
+//     &__circle {
+//         transition: stroke-dashoffset .3s linear .1s;
+//         stroke-dashoffset: circumference(23); // 23 is the <circle>'s radius
+//         stroke-dasharray: circumference(23);
+//     }
+// }
+      
+      
+// // ---------------------------
+// // Circular Splash Background
+// // ---------------------------
+      
+// .splash {
+//     position: absolute;
+//     top: 40px;
+//     right: 40px;
+//     width: 1px;
+//     height: 1px;
+        
+//     &::after {
+//         content: "";
+//         display: block;
+//         position: absolute;
+//         border-radius: 50%;
+//         background-color: var(--splash-bg-color);
+          
+//         // screen diameter can be 142vmax at most,
+//         // circle needs to be twice that size to cover it
+//         width: 284vmax;
+//         height: 284vmax;
+//         top: -142vmax;
+//         left: -142vmax;
+          
+//         transform: scale(0);
+//         transform-origin: 50% 50%;
+//         transition: transform .5s cubic-bezier(0.755, 0.050, 0.855, 0.060);
+          
+//         // will-change tells the browser we plan to 
+//         // animate this property in the near future
+//         will-change: transform;
+//     }
+// }
+      
+      
+// // ---------------------------
+// // Active State
+// // ---------------------------
+      
+// .nav:target,
+// .nav--open {
+        
+//     //scale the background circle to full size
+//     > .splash::after {
+//         transform: scale(1);
+//     }
+            
+//     //animate the menu icon
+//     .menuicon {
+//         color:white;
+//         transform: rotate(180deg);
+            
+//         &__circle {
+//             stroke-dashoffset: 0;
+//         }
+//         &__bar:nth-child(1),
+//         &__bar:nth-child(4) {
+//             opacity: 0;
+//         }
+//         &__bar:nth-child(2) {
+//             transform: rotate(45deg);
+//         }
+//         &__bar:nth-child(3) {
+//             transform: rotate(-45deg);
+//         }
+//     }
+            
+//     //show the nav items
+//     .nav {
+//         &__menu {
+//             visibility: visible;
+//         }
+            
+//         &__item {
+//             opacity: 1;
+//             transform: translateY(0);
+//         }
+//     }
+// }
+
+/****************************
+
+END MOBILE MENU ANIMATION CSS
+
+****************************/
+
+#desktop-menu {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    width: 100%;
+}
+
+.banner-gradient {
+    content: '';
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 0;
+    background-color: rgba(26, 26, 26, 30%);
+}
+
+#main-nav {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem 0 2rem 0;
+    text-align: center;
+
+    #nav-links {
+        display: none;
+        margin: 0;
+        align-items: center;
+        list-style: none;
+        padding: 0;
+        font-size: 1rem;
+        font-weight: 300;
+        
+        a {
+            color: whitesmoke;
+            text-decoration: none;
+            padding: 1rem;
+            margin-right: 1rem;
+        }
+
+        #contact-cta {
+            background-color: $primary-color;
+            border-radius: 2rem;
+            margin: 0;
+            padding: .75rem 1.25rem .75rem 1.25rem;
+            transition: font-weight 0.2s ease-in-out;
+
+            &:hover {
+                font-weight: 700;
+            }
+        }
+
+        @media only screen and (min-width: 1024px) {
+            display: flex;
+        }
+    }
+
+    #nav-logo {
+        text-transform: uppercase;
+        font-size: 2rem;
+        font-weight: 900;
+        margin: 0;
+    }
+}
+
+.main-banner {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 700px;
+    background-image: url('../images/skills-banner.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed;
+    z-index: 0;
+
+    #banner-headline {
+        position: relative;
+        z-index: 1;
+        font-size: 3rem;
+        color: $primary-color;
+        font-weight: 900;
+    }
+}
+
+#about-me {
+    position: relative;
+    &:before {
+        position: absolute;
+        top: -120px;
+        content: '';
+        width: 100%;
+        height: 150px;
+        background-image: url('../images/banner-shape.svg');
+        background-repeat: no-repeat;
+        background-size: 100% 101%;
+        background-position: center center;
+    }
+}
+
+.about-section {
+    display: flex;
+    justify-content: center;
+
+    h2 {
+        font-size: 3rem;
+        color: $primary-color;
+        font-weight: 900;
+    }
+
+    & > div {
+        width: 50%;
+        line-height: 30px;
+        margin-right: 4rem;
+    }
+
+    .about-content {
+        display: flex;
+        align-items: center;
+
+        h2 {
+            align-self: flex-start;
+        }
+    }
+
+    .profile-img {
+        margin: 0;
+        display: block;
+        background-image: url('../images/profile-img.jpg');
+        background-size: cover;
+        background-position: center center;
+        background-repeat: no-repeat;
+        margin: 0 auto;
+        height: 350px;
+        width: 350px;
+        border-radius: 50%;
+
+        @media only screen and (min-width: 1600px) {
+            margin: 0;
+        }
+    }
+}
+
+#skills {
+    background-image: url('../images/main-banner.jpg');
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    position: relative;
+    color: $background-color;
+    font-weight: 300;
+    font-size: 18px;
+
+    .skills-container {
+        position: relative;
+        z-index: 1;
+        display: flex;
+        justify-content: center;
+        overflow: scroll;
+
+        .skill-card {
+            content: '';
+            background-color: whitesmoke;
+            width: 10%;
+            height: 450px;
+            margin: 0 2rem 0 2rem;
+            padding: 2rem;
+            border-radius: 8px;
+
+            .design-tools {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                content: '';
+                height: 25%;
+                width: auto;
+                margin: 0 auto;
+            }
+
+            h3 {
+                font-size: 2.25rem;
+                text-align: center;
+                margin: 0;
+            }
+
+            hr {
+                margin-bottom: 3rem;
+            }
+
+            & > * {
+                margin: 1rem 0 1rem 0;
+            }
+
+            & > img:first-child {
+                height: 25%;
+                width: auto;
+                margin: 0 auto;
+            }
+
+            img {
+                display: block;
+                width: 100%;
+            }
+
+            .skills-icon {
+                width: 65%;
+            }
+
+            #css {
+                display: flex;
+                align-items: center;
+
+                img {
+                    width: 20%;
+                    margin-right: 1rem;
+                }
+            }
+
+            #bootstrap {
+                display: flex;
+                align-items: center;
+
+                img {
+                    width: 20%;
+                    margin-right: 1rem;
+                }
+            }
+
+            #git {
+                display: flex;
+                align-items: center;
+
+                img {
+                    width: 20%;
+                    margin-right: 1rem;
+                }
+            }
+
+            #figma {
+                display: flex;
+                align-items: center;
+
+                img {
+                    width: 20%;
+                    margin-right: 1rem;
+                }
+            }
+
+            #illustrator {
+                display: flex;
+                align-items: center;
+
+                img {
+                    width: 20%;
+                    margin-right: 1rem;
+                }
+            }
+
+            #sketch {
+                display: flex;
+                align-items: center;
+
+                img {
+                    width: 20%;
+                    margin-right: 1rem;
+                }
+            }
+
+            #photoshop {
+                display: flex;
+                align-items: center;
+
+                img {
+                    width: 20%;
+                    margin-right: 1rem;
+                }
+            }
+
+            #react {
+                display: flex;
+                align-items: center;
+
+                img {
+                    width: 30%;
+                }
+            }
+
+            #graph-ql {
+                display: flex;
+                align-items: center;
+                margin: 0;
+
+                img {
+                    width: 25%;
+                }
+            }
+        }
+    }
+}
+
+.carousel-wrapper {
+    overflow: hidden;
+
+    .carousel {
+        position: relative;
+        transform-style: preserve-3d;
+
+        .carousel__photo {
+            opacity: 0;
+            position: absolute;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center center;
+            top: 0;
+            height: 1000px;
+            width: 65%;
+            border-radius: 8px;
+            z-index: 100;
+            transition: transform .5s, opacity .5s, z-index .5s;
+
+            @media only screen and (min-width: 1024px) {
+                height: 510px;
+                width: 50%;
+            }
+        }
+
+        #opalescence {
+            background-image: url('../images/carousel-placeholder.jpg');
+        }
+
+        #ultradent {
+            background-image: url('../images/main-banner.jpg');
+        }
+
+        #whatsgoingon {
+            background-image: url('../images/skills-banner.jpg');
+        }
+
+        #cyberpunk {
+            background-image: url('../images/carousel-placeholder.jpg');
+        }
+
+        .carousel__photo.initial,
+        .carousel__photo.active {
+            opacity: 1;
+            position: relative;
+            z-index: 900;
+            transform: translateX(30%);
+
+            @media only screen and (min-width: 1024px) {
+                transform: translateX(50%);
+            }
+        }
+
+        .carousel__photo.prev,
+        .carousel__photo.next {
+            opacity: 1;
+            z-index: 800;
+        }
+
+        .carousel__photo.prev {
+            transform: translateX(-75%);
+
+            @media only screen and (min-width: 1024px) {
+                transform: translateX(-55%);
+            }
+        }
+
+        .carousel__photo.next {
+            transform: translateX(135%);
+
+            @media only screen and (min-width: 1024px) {
+                transform: translateX(155%);
+            }
+        }
+
+        .carousel__button--prev,
+        .carousel__button--next {
+            position: absolute;
+            top: 50%;
+            width: 3rem;
+            height: 3rem;
+            padding: 8px;
+            transform: translateY(-50%);
+            background-position: center center;
+            background-size: 75%;
+            background-repeat: no-repeat;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        .carousel__button--prev {
+            background-image: url('../images/left-arrow.svg');
+            left: 25px;
+        }
+
+        .carousel__button--next {
+            background-image: url('../images/right-arrow.svg');
+            right: 25px;
+        }
+
+        .carousel__gradient--left,
+        .carousel__gradient--right {
+            display: block;
+            position: absolute;
+            top: 0;
+            content: '';
+            height: 100%;
+            width: 20%;
+            z-index: 1000;
+
+            @media only screen and (min-width: 1024px) {
+                width: 23%;
+            }
+        }
+
+        .carousel__gradient--right {
+            background: linear-gradient(to right, rgba(26, 26, 29, 0), rgba(26, 26, 29, 1));
+            right: 0;
+        }
+
+        .carousel__gradient--left {
+            background: linear-gradient(to left, rgba(26, 26, 29, 0), rgba(26, 26, 29, 1));
+            left: 0;
+        }
+    }
+}

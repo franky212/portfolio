@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Output Management</title>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <header class="header" role="banner">
+    
+            <div id="nav" class="nav" role="navigation">
+              
+              <!-- ACTUAL NAVIGATION MENU -->
+              <ul class="nav__menu" id="menu" tabindex="-1" aria-label="main navigation" hidden>
+                <li class="nav__item"><a href="#" class="nav__link">Home</a></li>
+                <li class="nav__item"><a href="#" class="nav__link">Shop</a></li>
+                <li class="nav__item"><a href="#" class="nav__link">Blog</a></li>
+                <li class="nav__item"><a href="#" class="nav__link">About</a></li>
+                <li class="nav__item"><a href="#" class="nav__link">Contact</a></li>
+              </ul>
+              
+              <!-- MENU TOGGLE BUTTON -->
+              <a href="#nav" class="nav__toggle" role="button" aria-expanded="false" aria-controls="menu">
+                <svg class="menuicon" xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 50 50">
+                  <title>Toggle Menu</title>
+                  <g>
+                    <line class="menuicon__bar" x1="13" y1="16.5" x2="37" y2="16.5"/>
+                    <line class="menuicon__bar" x1="13" y1="24.5" x2="37" y2="24.5"/>
+                    <line class="menuicon__bar" x1="13" y1="24.5" x2="37" y2="24.5"/>
+                    <line class="menuicon__bar" x1="13" y1="32.5" x2="37" y2="32.5"/>
+                    <circle class="menuicon__circle" r="23" cx="25" cy="25" />
+                  </g>
+                </svg>
+              </a>
+              
+              <!-- ANIMATED BACKGROUND ELEMENT -->
+              <div class="splash"></div>
+              
+            </div>
+            
+        </header>
+        <div class="main-banner">
+            <nav id="desktop-menu">
+                <div class="container">
+                    <div id="main-nav">
+                        <p id="nav-logo">Frank Delaguila</p>
+                        <ul id="nav-links">
+                            <a href="#"><li>Home</li></a>
+                            <a href="#"><li>About Me</li></a>
+                            <a href="#"><li>Portfolio</li></a>
+                            <a href="#" id="contact-cta" class="button fill"><li>Contact Me</li></a>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+            <div class="banner-gradient"></div>
+            <div class="container">
+                <h1 id="banner-headline">Front End Web Developer<br/>& Designer</h1>
+            </div>
+        </div>
+
+        <section id="about-me" class="banner-shape">
+            <div class="container">
+                <div class="about-section">
+                    <div class="about-content">
+                        <div>
+                            <h2>Hi, I'm Frank</h2>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec porta a nibh eget venenatis. Aenean at odio lacus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Donec a quam id dui molestie consequat. Curabitur ac sapien tellus. Donec malesuada molestie tortor a varius. Morbi lacus neque, fringilla sed vulputate eu, congue vestibulum nunc. Donec eget eleifend mi, ut posuere velit. Pellentesque sit amet lacinia sapien.</p>
+                        </div>
+                    </div>
+                    <div class="profile-img">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills">
+            <div class="banner-gradient"></div>
+            <div class="container skills-container">
+                <div class="skill-card">
+                    <img src="../images/node.svg" alt="NodeJS">
+                    <hr/>
+                    <img class="skills-icon" src="../images/express.svg" alt="Express">
+                    <img class="skills-icon" src="../images/mongodb.svg" alt="MongoDB">
+                    <img class="skills-icon" src="../images/mongoose.svg" alt="Mongoose">
+                    <div id="graph-ql">
+                        <img src="../images/graphql.svg" alt="GraphQL">
+                        <span>GraphQL</span>
+                    </div>
+                </div>
+                <div class="skill-card">
+                    <img src="../images/html.svg" alt="HTML5">
+                    <hr />
+                    <div id="css">
+                        <img class="skills-icon" src="../images/css.svg" alt="CSS3">
+                        <span>CSS3</span>
+                    </div>
+                    <div id="bootstrap">
+                        <img class="skills-icon" src="../images/bootstrap.svg" alt="Bootstrap">
+                        <span>Bootstrap</span>
+                    </div>
+                    <div id="git">
+                        <img class="skills-icon" src="../images/git.svg" alt="Git">
+                        <span>Git</span>
+                    </div>
+                    <p>Razor Views</p>
+                </div>
+                <div class="skill-card">
+                    <img src="../images/logo-javascript.svg" alt="Javascript">
+                    <hr />
+                    <div id="react">
+                        <img src="../images/react.svg" alt="React">
+                        <span>React</span>
+                    </div>
+                    <img class="skills-icon" src="../images/jquery.svg" alt="jQuery">
+                    <img class="skills-icon" src="../images/webpack.svg" alt="Webpack">
+                </div>
+                <div class="skill-card">
+                    <div class="design-tools">
+                        <h3>Design<br/>Tools</h3>
+                    </div>
+                    <hr />
+                    <div id="figma">
+                        <img class="skills-icon" src="../images/figma.svg" alt="Figma">
+                        <span>Figma</span>
+                    </div>
+                    <div id="illustrator">
+                        <img class="skills-icon" src="../images/illustrator.svg" alt="Illustrator">
+                        <span>Illustrator</span>
+                    </div>
+                    <div id="sketch">
+                        <img class="skills-icon" src="../images/sketch.svg" alt="Sketch">
+                        <span>Sketch</span>
+                    </div>
+                    <div id="photoshop">
+                        <img class="skills-icon" src="../images/photoshop.svg" alt="Photoshop">
+                        <span>Photoshop</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="carousel-wrapper">
+                <div class="carousel">
+                    <div id="opalescence" class="carousel__photo initial">
+
+                    </div>
+                    <div id="ultradent" class="carousel__photo">
+
+                    </div>
+                    <div id="whatsgoingon" class="carousel__photo">
+
+                    </div>
+                    <div id="cyberpunk" class="carousel__photo">
+
+                    </div>
+
+                    <div class="carousel__gradient--left"></div>
+                    <div class="carousel__gradient--right"></div>
+                    <div class="carousel__button--next"></div>
+                    <div class="carousel__button--prev"></div>
+                </div>
+            </div>
+        </section>
+
+    </body>
+</html>

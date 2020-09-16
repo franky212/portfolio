@@ -1,0 +1,41 @@
+{
+  "name": "portfolio",
+  "version": "1.0.0",
+  "description": "",
+  "private": true,
+  "scripts": {
+    "server": "node server.js",
+    "webpack": "webpack",
+    "start": "webpack-dev-server --open",
+    "build": "webpack && cd ./dist && surge --domain frankdelaguila-dev.surge.sh",
+    "deploy": "webpack && cd ./dist && surge --domain frankdelaguila.surge.sh",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "clean-webpack-plugin": "^3.0.0",
+    "css-loader": "^4.2.2",
+    "express": "^4.17.1",
+    "file-loader": "^6.1.0",
+    "html-critical-webpack-plugin": "^2.1.0",
+    "html-loader": "^1.3.0",
+    "html-webpack-plugin": "^4.4.1",
+    "image-webpack-loader": "^6.0.0",
+    "mini-css-extract-plugin": "^0.11.0",
+    "sass": "^1.26.10",
+    "sass-loader": "^10.0.2",
+    "style-loader": "^1.2.1",
+    "surge": "^0.21.6",
+    "webpack": "^4.44.1",
+    "webpack-cli": "^3.3.12",
+    "webpack-dev-middleware": "^3.7.2",
+    "webpack-dev-server": "^3.11.0",
+    "webpack-hot-middleware": "^2.25.0",
+    "webpack-modernizr-loader": "^5.0.0"
+  },
+  "dependencies": {
+    "lodash": "^4.17.20",
+    "normalize.css": "^8.0.1"
+  }
+}
