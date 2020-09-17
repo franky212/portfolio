@@ -6,41 +6,31 @@
         <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&display=swap" rel="stylesheet">
     </head>
     <body>
-        <!-- <header class="header" role="banner">
-    
-            <div id="nav" class="nav" role="navigation">
-              
-              <ul class="nav__menu" id="menu" tabindex="-1" aria-label="main navigation" hidden>
-                <li class="nav__item"><a href="#" class="nav__link">Home</a></li>
-                <li class="nav__item"><a href="#" class="nav__link">Shop</a></li>
-                <li class="nav__item"><a href="#" class="nav__link">Blog</a></li>
-                <li class="nav__item"><a href="#" class="nav__link">About</a></li>
-                <li class="nav__item"><a href="#" class="nav__link">Contact</a></li>
-              </ul>
-              
-              <a href="#nav" class="nav__toggle" role="button" aria-expanded="false" aria-controls="menu">
-                <svg class="menuicon" xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 50 50">
-                  <title>Toggle Menu</title>
-                  <g>
-                    <line class="menuicon__bar" x1="13" y1="16.5" x2="37" y2="16.5"/>
-                    <line class="menuicon__bar" x1="13" y1="24.5" x2="37" y2="24.5"/>
-                    <line class="menuicon__bar" x1="13" y1="24.5" x2="37" y2="24.5"/>
-                    <line class="menuicon__bar" x1="13" y1="32.5" x2="37" y2="32.5"/>
-                    <circle class="menuicon__circle" r="23" cx="25" cy="25" />
-                  </g>
-                </svg>
-              </a>
-              
-              <div class="splash"></div>
-              
-            </div>
-            
-        </header> -->
+        <div class="mobile-nav">
+            <ul class="mobile-links">
+                <li>Home</li>
+                <li>About Me</li>
+                <li>Portfolio</li>
+                <li>Contact Me</li>
+            </ul>
+        </div>
         <div class="main-banner">
             <nav id="desktop-menu">
                 <div class="container">
                     <div id="main-nav">
                         <p id="nav-logo">Frank Delaguila</p>
+                        <a href="#nav" class="nav__toggle" role="button" aria-expanded="false" aria-controls="menu">
+                            <svg class="menuicon" xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 50 50">
+                              <title>Toggle Menu</title>
+                              <g>
+                                <line class="menuicon__bar" x1="13" y1="16.5" x2="37" y2="16.5"/>
+                                <line class="menuicon__bar" x1="13" y1="24.5" x2="37" y2="24.5"/>
+                                <line class="menuicon__bar" x1="13" y1="24.5" x2="37" y2="24.5"/>
+                                <line class="menuicon__bar" x1="13" y1="32.5" x2="37" y2="32.5"/>
+                                <circle class="menuicon__circle" r="23" cx="25" cy="25" />
+                              </g>
+                            </svg>
+                        </a>
                         <ul id="nav-links">
                             <a href="#"><li>Home</li></a>
                             <a href="#"><li>About Me</li></a>
@@ -52,7 +42,7 @@
             </nav>
             <div class="banner-gradient"></div>
             <div class="container">
-                <h1 id="banner-headline">Front End Web Developer<br/>& Designer</h1>
+                <h1 id="banner-headline" class="animate__animated animate__fadeInUp">Front End Web Developer<br/>& Designer</h1>
             </div>
         </div>
 
