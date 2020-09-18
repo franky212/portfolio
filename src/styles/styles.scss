@@ -16,6 +16,11 @@ html, body {
     font-size: 16px;
 }
 
+body {
+    opacity: 0;
+    transition: opacity 0.2s ease-in;
+}
+
 a {
     &:link {
         color: $secondary-color;
@@ -74,6 +79,7 @@ MOBILE MENU ANIMATION CSS
     overflow: hidden;
 
     .mobile-nav {
+        display: block;
 
         &:before {
             opacity: 0.5;
@@ -82,12 +88,6 @@ MOBILE MENU ANIMATION CSS
         &:after {
             transform: translateX(45%);
         }
-    }
-}
-
-.header {
-    @media only screen and (min-width: 1024px) {
-        display: none;
     }
 }
 
@@ -144,6 +144,10 @@ MOBILE MENU ANIMATION CSS
             font-weight: 300;
         }
     }
+
+    @media only screen and (min-width: 1024px) {
+        display: none;
+    }
 }
 
 .menuicon {
@@ -177,11 +181,6 @@ MOBILE MENU ANIMATION CSS
 
 .nav:target,
 .nav--open {
-  
-  //scale the background circle to full size
-  > .splash::after {
-    transform:scale(1);
-  }
   
   //animate the menu icon
   .menuicon {
@@ -270,6 +269,12 @@ END MOBILE MENU ANIMATION CSS
         font-weight: 900;
         margin: 0;
     }
+
+    @media only screen and (min-width: 1024px) {
+        .nav__toggle {
+            display: none;
+        }
+    }
 }
 
 .main-banner {
@@ -286,6 +291,7 @@ END MOBILE MENU ANIMATION CSS
 
     #banner-headline {
         position: relative;
+        opacity: 0;
         z-index: 1;
         font-size: 3rem;
         color: $primary-color;

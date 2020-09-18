@@ -9,7 +9,7 @@ const modernizr = require( 'modernizr' );
 const mode = process.env.NODE_ENV || 'development';
 const isDev = mode === "development";
 
-module.exports = {
+let config = {
     mode: 'development',
     entry: [
         './src/scripts/index.js',
@@ -35,25 +35,6 @@ module.exports = {
             template: './src/views/index.html',
             inject: true
         } ),
-        // new HtmlCriticalWebpackPlugin( {
-        //     base: path.join(path.resolve( __dirname), './dist/'),
-        //     src: 'index.html',
-        //     dest: 'index.html',
-        //     inline: true,
-        //     minify: true,
-        //     extract: true,
-        //     width: 1920,
-        //     height: 800,
-        //     // Output results to file
-        //     // target: {
-        //     //     html: './src/views/index.html',
-        //     //     css: 'styles.css',
-        //     //     uncritical: 'styles.css'
-        //     // },
-        //     penthouse: {
-        //         blockJSRequests: false
-        //     }
-        // } )
     ],
     output: {
         filename: '[name].js',
@@ -85,7 +66,7 @@ module.exports = {
                 ]
             },
             {
-                test: /\.(png|svg|jpe?g|gif)$/i,
+                test: /\.(png|svg|jpe?g|gif|webp)$/i,
                 use: [
                     {
                         loader: 'file-loader',
@@ -106,3 +87,21 @@ module.exports = {
         ]
     }
 };
+
+!isDev ? config.plugins.push(
+    new HtmlCriticalWebpackPlugin( {
+        base: path.join(path.resolve( __dirname), './dist'),
+        src: 'index.html',
+        dest: 'index.html',
+        inline: true,
+        minify: true,
+        extract: true,
+        width: 1920,
+        height: 1080,
+        penthouse: {
+            blockJSRequests: false
+        }
+    } )
+) : null;
+
+module.exports = config;

@@ -4,13 +4,24 @@ import '../styles/styles.scss';
 
 !(function(d) {
 
+    // ANIMATION CODE
+
+    window.addEventListener( 'load', () => {
+        const body = document.querySelector( 'body' );
+        const bannerHeadline = document.querySelector( '#banner-headline' );
+        bannerHeadline.classList.add( 'animate__fadeInUp' );
+        body.style.opacity = 1;
+    } );
+
+    // END ANIMATION CODE
+
     // MOBILE MENU CODE
 
     const mobileMenuButton = document.querySelector('.nav__toggle');
     const html = document.querySelector( 'html' );
 
     mobileMenuButton.addEventListener( 'click', () => {
-        html.classList.add( 'mobile-menu__open' );
+        html.classList.toggle( 'mobile-menu__open' );
     } );
 
     // END MOBILE MENU CODE
