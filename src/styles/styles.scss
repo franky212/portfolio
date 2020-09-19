@@ -1,8 +1,3 @@
-@function circumference($r){
-    $pi: 3.141592653;
-    @return 2*$pi*$r;
-  }
-
 $background-color: #1a1a1d;
 $primary-color: #9c2018;
 $secondary-color: #00CCF9;
@@ -16,7 +11,7 @@ html, body {
     font-size: 16px;
 }
 
-body {
+.page_body {
     opacity: 0;
     transition: opacity 0.2s ease-in;
 }
@@ -57,7 +52,7 @@ section {
 .button {
     position: relative;
     outline: 0;
-    overflow:hidden;
+    overflow: hidden;
     background: none;
     z-index: 1;
     cursor: pointer;
@@ -78,52 +73,39 @@ MOBILE MENU ANIMATION CSS
 .mobile-menu__open {
     overflow: hidden;
 
+    .page_body {
+        opacity: 0.5!important;
+    }
+
     .mobile-nav {
-        display: block;
+        width: 65%;
 
-        &:before {
-            opacity: 0.5;
-        }
-
-        &:after {
-            transform: translateX(45%);
+        .mobile-links {
+            opacity: 1;
         }
     }
 }
 
-.nav__toggle {
-    position: relative;
-    z-index: 9999;
+.nav__open,
+.nav__close {
+    padding: 1rem;
 }
 
 .mobile-nav {
     position: absolute;
-    width: 100%;
+    right: 0;
+    width: 0;
     height: 100%;
     z-index: 999;
     overflow: hidden;
+    background-color: $background-color;
+    transition: width 0.2s ease-in-out;
 
-    &:before {
+    .nav__close {
         position: absolute;
-        opacity: 0;
-        content: '';
-        background-color: white;
-        height: 100%;
-        width: 100%;
-        transition: opacity 0.2s ease-in-out; 
-    }
-
-    &:after {
-        content: '';
-        display: block;
-        position: absolute;
-        transform:  translateX(115%) rotate( -9deg);
-        top: -50%;
-        width: 100%;
-        background-color: $background-color;
-        height: 200%;
-        transition: transform 0.2s ease-in-out;
-        will-change: transform;
+        top: 0;
+        right: 0;
+        color: white;
     }
 
     .mobile-links {
@@ -131,17 +113,19 @@ MOBILE MENU ANIMATION CSS
         margin: 0;
         position: relative;
         opacity: 0;
-        top: 40%;
-        left: 50%;
+        transition: opacity 0.4s ease-in-out;
+        top: 0;
+        left: 0;
         z-index: 999;
-        transform: translate(-10%, -40%);
-        font-size: 4rem;
+        font-size: 2rem;
         list-style: none;
 
         li {
             margin: 4rem 0 4rem 0;
             padding: 2rem;
-            font-weight: 300;
+            color: white;
+            font-weight: 700;
+            opacity: 1!important;
         }
     }
 
@@ -153,12 +137,9 @@ MOBILE MENU ANIMATION CSS
 .menuicon {
     display:block;
     cursor:pointer;
-    color: white;
+    color: whitesmoke;
     
-    transform:rotate(0deg);
-    
-    &__bar,
-    &__circle {
+    &__bar {
       fill:none;
       stroke: currentColor;
       stroke-width:3;
@@ -169,10 +150,6 @@ MOBILE MENU ANIMATION CSS
       transform-origin:50% 50%;
       transition: transform .25s ease-in-out;
     }
-    &__circle {
-      stroke-dashoffset:circumference(23); // 23 is the <circle>'s radius
-      stroke-dasharray:circumference(23);
-    }
 }
 
 // ---------------------------
@@ -180,7 +157,7 @@ MOBILE MENU ANIMATION CSS
 // ---------------------------
 
 .nav:target,
-.nav--open {
+.nav__close {
   
   //animate the menu icon
   .menuicon {
@@ -271,7 +248,7 @@ END MOBILE MENU ANIMATION CSS
     }
 
     @media only screen and (min-width: 1024px) {
-        .nav__toggle {
+        .nav__open {
             display: none;
         }
     }
@@ -296,6 +273,7 @@ END MOBILE MENU ANIMATION CSS
         font-size: 3rem;
         color: $primary-color;
         font-weight: 900;
+        text-shadow: .5px .5px 2px #1a1a1d;
     }
 
     @media only screen and (min-width: 1024px) {
@@ -410,17 +388,19 @@ END MOBILE MENU ANIMATION CSS
         position: relative;
         z-index: 1;
         display: flex;
+        flex-direction: column;
         justify-content: center;
-        overflow: scroll;
 
         .skill-card {
             content: '';
             background-color: whitesmoke;
-            width: 10%;
-            height: 450px;
-            margin: 0 2rem 0 2rem;
+            width: 50%;
+            height: 550px;
+            margin: 2rem auto;
             padding: 2rem;
             border-radius: 8px;
+            box-shadow: 0 2px 35px 0 #1a1a1d;
+            font-size: 1.5rem;
 
             .design-tools {
                 display: flex;
@@ -440,6 +420,10 @@ END MOBILE MENU ANIMATION CSS
 
             hr {
                 margin-bottom: 3rem;
+
+                @media only screen and (min-width: 1024px) {
+                    margin-bottom: 2rem;
+                }
             }
 
             & > * {
@@ -447,9 +431,14 @@ END MOBILE MENU ANIMATION CSS
             }
 
             & > img:first-child {
-                height: 25%;
-                width: auto;
+                height: auto;
+                width: 50%;
                 margin: 0 auto;
+
+                @media only screen and (min-width: 1024px) {
+                    height: 20%;
+                    width: auto;
+                }
             }
 
             img {
@@ -458,7 +447,11 @@ END MOBILE MENU ANIMATION CSS
             }
 
             .skills-icon {
-                width: 65%;
+                width: 45%;
+
+                @media only screen and (min-width: 1024px) {
+                    width: 65%;
+                }
             }
 
             #css {
@@ -466,8 +459,12 @@ END MOBILE MENU ANIMATION CSS
                 align-items: center;
 
                 img {
-                    width: 20%;
+                    width: 10%;
                     margin-right: 1rem;
+
+                    @media only screen and (min-width: 1024px) {
+                        width: 20%;
+                    }
                 }
             }
 
@@ -476,8 +473,12 @@ END MOBILE MENU ANIMATION CSS
                 align-items: center;
 
                 img {
-                    width: 20%;
+                    width: 10%;
                     margin-right: 1rem;
+
+                    @media only screen and (min-width: 1024px) {
+                        width: 20%;
+                    }
                 }
             }
 
@@ -486,8 +487,12 @@ END MOBILE MENU ANIMATION CSS
                 align-items: center;
 
                 img {
-                    width: 20%;
+                    width: 10%;
                     margin-right: 1rem;
+
+                    @media only screen and (min-width: 1024px) {
+                        width: 20%;
+                    }
                 }
             }
 
@@ -496,8 +501,12 @@ END MOBILE MENU ANIMATION CSS
                 align-items: center;
 
                 img {
-                    width: 20%;
+                    width: 10%;
                     margin-right: 1rem;
+
+                    @media only screen and (min-width: 1024px) {
+                        width: 20%;
+                    }
                 }
             }
 
@@ -506,8 +515,12 @@ END MOBILE MENU ANIMATION CSS
                 align-items: center;
 
                 img {
-                    width: 20%;
+                    width: 10%;
                     margin-right: 1rem;
+
+                    @media only screen and (min-width: 1024px) {
+                        width: 20%;
+                    }
                 }
             }
 
@@ -516,8 +529,12 @@ END MOBILE MENU ANIMATION CSS
                 align-items: center;
 
                 img {
-                    width: 20%;
+                    width: 10%;
                     margin-right: 1rem;
+
+                    @media only screen and (min-width: 1024px) {
+                        width: 20%;
+                    }
                 }
             }
 
@@ -526,8 +543,12 @@ END MOBILE MENU ANIMATION CSS
                 align-items: center;
 
                 img {
-                    width: 20%;
+                    width: 10%;
                     margin-right: 1rem;
+
+                    @media only screen and (min-width: 1024px) {
+                        width: 20%;
+                    }
                 }
             }
 
@@ -536,7 +557,11 @@ END MOBILE MENU ANIMATION CSS
                 align-items: center;
 
                 img {
-                    width: 30%;
+                    width: 20%;
+
+                    @media only screen and (min-width: 1024px) {
+                        width: 20%;
+                    }
                 }
             }
 
@@ -546,9 +571,24 @@ END MOBILE MENU ANIMATION CSS
                 margin: 0;
 
                 img {
-                    width: 25%;
+                    width: 15%;
+
+                    @media only screen and (min-width: 1024px) {
+                        width: 25%;
+                    }
                 }
             }
+
+            @media only screen and (min-width: 1024px) {
+                width: 10%;
+                height: 450px;
+                margin: 0 2rem 0 2rem;
+                font-size: 1rem;
+            }
+        }
+
+        @media only screen and (min-width: 1024px) {
+            flex-direction: row;
         }
     }
 }

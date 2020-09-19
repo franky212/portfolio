@@ -4,11 +4,14 @@ import '../styles/styles.scss';
 
 !(function(d) {
 
+    const body = document.querySelector( '.page_body' );
+    const bannerHeadline = document.querySelector( '#banner-headline' );
+
     // ANIMATION CODE
+    // NOTE: Should find a better solution then to use code for animations
+    // user could have Javascript disabled.
 
     window.addEventListener( 'load', () => {
-        const body = document.querySelector( 'body' );
-        const bannerHeadline = document.querySelector( '#banner-headline' );
         bannerHeadline.classList.add( 'animate__fadeInUp' );
         body.style.opacity = 1;
     } );
@@ -17,12 +20,18 @@ import '../styles/styles.scss';
 
     // MOBILE MENU CODE
 
-    const mobileMenuButton = document.querySelector('.nav__toggle');
+    const openMenu = document.querySelector( '.nav__open' );
+    const closeMenu = document.querySelector( '.nav__close' );
     const html = document.querySelector( 'html' );
 
-    mobileMenuButton.addEventListener( 'click', () => {
-        html.classList.toggle( 'mobile-menu__open' );
+    openMenu.addEventListener( 'click', () => {
+        html.classList.add( 'mobile-menu__open' );
     } );
+
+    closeMenu.addEventListener( 'click', () => {
+        html.classList.remove( 'mobile-menu__open' );
+    } );
+
 
     // END MOBILE MENU CODE
 

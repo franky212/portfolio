@@ -5,7 +5,7 @@
   "private": true,
   "scripts": {
     "server": "node server.js",
-    "webpack": "webpack",
+    "webpack": "cross-env NODE_ENV=production webpack",
     "start": "webpack-dev-server --open",
     "build": "cross-env NODE_ENV=production webpack && cd ./dist && surge --domain frankdelaguila-dev.surge.sh",
     "deploy": "webpack && cd ./dist && surge --domain frankdelaguila.surge.sh",
@@ -14,6 +14,10 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@babel/core": "^7.11.6",
+    "@babel/plugin-transform-runtime": "^7.11.5",
+    "@babel/preset-env": "^7.11.5",
+    "babel-loader": "^8.1.0",
     "clean-webpack-plugin": "^3.0.0",
     "critical": "^2.0.4",
     "cross-env": "^7.0.2",
@@ -33,10 +37,10 @@
     "webpack-cli": "^3.3.12",
     "webpack-dev-middleware": "^3.7.2",
     "webpack-dev-server": "^3.11.0",
-    "webpack-hot-middleware": "^2.25.0",
-    "webpack-modernizr-loader": "^5.0.0"
+    "webpack-hot-middleware": "^2.25.0"
   },
   "dependencies": {
+    "@babel/runtime": "^7.11.2",
     "animate.css": "^4.1.1",
     "lodash": "^4.17.20",
     "normalize.css": "^8.0.1"
