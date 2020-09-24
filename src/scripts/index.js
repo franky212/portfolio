@@ -48,6 +48,7 @@ import '../styles/styles.scss';
         threshold = 150,
         allowedTime = 200,
         elapsedTime,
+        touchObj,
         startTime;
     
     function handleSwipe( isRightSwipe ) {
@@ -69,6 +70,36 @@ import '../styles/styles.scss';
         items[1].classList.add( "next" );
     }
 
+    function dragStart( e ) {
+        e = e || window.event;
+
+        if( e.type === 'touchstart' ) {
+            touchObj = e.changedTouches[0];
+            startX = touch.pageX;
+            startY = touch.pageY;
+        }
+        else {
+            touchObj = e;
+            startX = e.pageX;
+            startY = e.pageY;
+        }
+    }
+
+    function dragEnd( e ) {
+
+        dist = touchObj.pageX - startX;
+        elapsedTime = new Date().getTime() - startTime;
+
+        if( e.type === 'touchend' ) {
+        }
+        else {
+
+        }
+
+        var swiperightBol = (elapsedTime <= allowedTime && dist >= threshold && Math.abs(touchObj.pageY - startY) <= 100)
+        handleSwipe(swiperightBol);
+    }
+
     // Set event listeners
     function setEventListeners() {
         var next = d.getElementsByClassName( 'carousel__button--next' )[0],
@@ -77,20 +108,43 @@ import '../styles/styles.scss';
         next.addEventListener( 'click', moveNext );
         prev.addEventListener( 'click', movePrev );
 
-        touchSurface.addEventListener('touchstart', function(e){
+        touchSurface.addEventListener( 'mousedown', function( e ) {
+            e.preventDefault();
+            startX = e.pageX;
+            startY = e.pageY;
+            startTime = new Date().getTime();
+
+            console.log( 'pageX: ', e.pageX, ' ', 'pageY: ', e.pageY );
+        }, false );
+
+        touchSurface.addEventListener( 'mousemove', function( e ) {
+            e.preventDefault();
+        }, false );
+
+        touchSurface.addEventListener( 'mouseup', function( e ) {
+            dist = e.pageX - startX;
+            elapsedTime = new Date().getTime() - startTime;
+            var swiperightBol = (elapsedTime <= allowedTime && dist >= threshold && Math.abs(e.pageY - startY) <= 100)
+            handleSwipe(swiperightBol);
+            e.preventDefault();
+
+            console.log( 'distance traveled: ', e.pageX - startX );
+        }, false );
+
+        touchSurface.addEventListener('touchstart', function( e ) {
             var touchobj = e.changedTouches[0]
             dist = 0
-            startX = touchobj.pageX
-            startY = touchobj.pageY
+            startX = touchobj.pageX;
+            startY = touchobj.pageY;
             startTime = new Date().getTime() // record time when finger first makes contact with surface
-            e.preventDefault()
+            e.preventDefault();
         }, false)
      
-        touchSurface.addEventListener('touchmove', function(e){
+        touchSurface.addEventListener('touchmove', function( e ) {
             e.preventDefault() // prevent scrolling when inside DIV
         }, false)
      
-        touchSurface.addEventListener('touchend', function(e){
+        touchSurface.addEventListener('touchend', function( e ) {
             var touchobj = e.changedTouches[0]
             dist = touchobj.pageX - startX // get total dist traveled by finger while in contact with surface
             elapsedTime = new Date().getTime() - startTime // get time elapsed

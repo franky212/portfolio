@@ -1,0 +1,25 @@
+html, body {
+    font-family: 'Roboto', sans-serif;
+    background-color: $background-color;
+    box-sizing: border-box;
+    color: whitesmoke;
+    font-size: 16px;
+}
+
+.page_body {
+    opacity: 0;
+    transition: opacity 0.2s ease-in;
+}
+
+a {
+    &:link {
+        color: $secondary-color;
+    }
+    &:visited {
+        color: $secondary-color-dark;
+    }
+}
+
+section {
+    padding: 8rem 0 8rem 0;
+}

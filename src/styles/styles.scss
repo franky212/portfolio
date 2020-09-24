@@ -1,33 +1,6 @@
-$background-color: #1a1a1d;
-$primary-color: #9c2018;
-$secondary-color: #00CCF9;
-$secondary-color-dark: darken($secondary-color, 50%);
-
-html, body {
-    font-family: 'Roboto', sans-serif;
-    background-color: $background-color;
-    box-sizing: border-box;
-    color: whitesmoke;
-    font-size: 16px;
-}
-
-.page_body {
-    opacity: 0;
-    transition: opacity 0.2s ease-in;
-}
-
-a {
-    &:link {
-        color: $secondary-color;
-    }
-    &:visited {
-        color: $secondary-color-dark;
-    }
-}
-
-section {
-    padding: 8rem 0 8rem 0;
-}
+@import './base-styles/variables';
+@import './base-styles/base-styles';
+@import './base-styles/containers.scss';
   
 .fill:before {
     content: "";
@@ -56,12 +29,6 @@ section {
     background: none;
     z-index: 1;
     cursor: pointer;
-}
-
-.container {
-    padding: 0 4rem 0 4rem;
-    margin: 0 auto;
-    max-width: 1920px;
 }
 
 /****************************
@@ -599,6 +566,11 @@ END MOBILE MENU ANIMATION CSS
     .carousel {
         position: relative;
         transform-style: preserve-3d;
+        cursor: grab;
+
+        &:active {
+            cursor: grabbing;
+        }
 
         .carousel__photo {
             opacity: 0;
