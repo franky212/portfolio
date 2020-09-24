@@ -48,7 +48,6 @@ import '../styles/styles.scss';
         threshold = 150,
         allowedTime = 200,
         elapsedTime,
-        touchObj,
         startTime;
 
     // Set classes
@@ -86,16 +85,16 @@ import '../styles/styles.scss';
             touchSurface.addEventListener('touchstart', function( e ) {
                 e.preventDefault();
                 dragStart( e ); 
-            }, false)
+            }, false )
          
             touchSurface.addEventListener('touchmove', function( e ) {
                 e.preventDefault();
-            }, false)
+            }, false )
          
             touchSurface.addEventListener('touchend', function( e ) {
                 e.preventDefault();
                 dragEnd( e );
-            }, false)
+            }, false )
         }
 
     function dragStart( e ) {
@@ -103,43 +102,41 @@ import '../styles/styles.scss';
 
         e.preventDefault();
 
-        console.log( 'dragStart type: ', e.type );
+        //console.log( 'dragStart type: ', e.type );
 
-        if( e.type === 'touchstart' ) {
-            touchObj = e.changedTouches[0];
-            startX = touchObj.pageX;
-            startY = touchObj.pageY;
-        }
-        else {
-            touchObj = e;
-            startX = touchObj.pageX;
-            console.log( 'dragStart startX: ', startX );
-            startY = touchObj.pageY;
-        }
+        var touchObj = e || e.changedTouches[0];
+        startX = touchObj.pageX;
+        startY = touchObj.pageY;
+        startTime = new Date().getTime();
     }
 
     function dragEnd( e ) {
+        var touchObj = e || e.changedTouches[0];
 
-        console.log( 'dragEnd type: ', e.type );
+        //console.log( 'dragEnd type: ', e.type );
 
-        console.log( 'dragEnd touchObj: ', touchObj );
+        //console.log( 'dragEnd touchObj: ', touchObj );
 
         e.preventDefault();
 
         dist = touchObj.pageX - startX;
-        console.log( 'distance: ', dist );
-        console.log( 'touchObj.pageX: ', touchObj.pageX );
-        console.log( 'startX: ', startX );
+        //console.log( 'distance: ', dist );
+        //console.log( 'dragEnd touchObj.pageX: ', touchObj.pageX );
+        //console.log( 'startX: ', startX );
         elapsedTime = new Date().getTime() - startTime;
 
         var swipeRight = (elapsedTime <= allowedTime && dist >= threshold && Math.abs(touchObj.pageY - startY) <= 100);
-        console.log( 'swipe right: ', swipeRight );
+        console.log( 'time: ', elapsedTime <= allowedTime, ' / ', 'elapsedTime: ', elapsedTime, ' - ', 'allowedTime: ', allowedTime )
+        //console.log( 'swipe right: ', swipeRight );
 
-        handleSwipe( swipeRight );
+        handleSwipe( swipeRight, e );
     }
 
-    function handleSwipe( isRightSwipe ) {
-        if( isRightSwipe ) {
+    function handleSwipe( isRightSwipe, e ) {
+        if( dist === 0 ) {
+            e.preventDefault()
+        }
+        else if( isRightSwipe ) {
             movePrev();
         }
         else {
