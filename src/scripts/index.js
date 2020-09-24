@@ -102,8 +102,6 @@ import '../styles/styles.scss';
 
         e.preventDefault();
 
-        //console.log( 'dragStart type: ', e.type );
-
         var touchObj = e || e.changedTouches[0];
         startX = touchObj.pageX;
         startY = touchObj.pageY;
@@ -113,21 +111,12 @@ import '../styles/styles.scss';
     function dragEnd( e ) {
         var touchObj = e || e.changedTouches[0];
 
-        //console.log( 'dragEnd type: ', e.type );
-
-        //console.log( 'dragEnd touchObj: ', touchObj );
-
         e.preventDefault();
 
         dist = touchObj.pageX - startX;
-        //console.log( 'distance: ', dist );
-        //console.log( 'dragEnd touchObj.pageX: ', touchObj.pageX );
-        //console.log( 'startX: ', startX );
         elapsedTime = new Date().getTime() - startTime;
 
         var swipeRight = (elapsedTime <= allowedTime && dist >= threshold && Math.abs(touchObj.pageY - startY) <= 100);
-        console.log( 'time: ', elapsedTime <= allowedTime, ' / ', 'elapsedTime: ', elapsedTime, ' - ', 'allowedTime: ', allowedTime )
-        //console.log( 'swipe right: ', swipeRight );
 
         handleSwipe( swipeRight, e );
     }
