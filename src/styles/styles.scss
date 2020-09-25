@@ -227,7 +227,7 @@ END MOBILE MENU ANIMATION CSS
     justify-content: center;
     align-items: center;
     height: 700px;
-    background-image: url('../images/skills-banner.jpg');
+    background-image: url('../images/main-banner.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center center;
@@ -342,7 +342,7 @@ END MOBILE MENU ANIMATION CSS
 }
 
 #skills {
-    background-image: url('../images/main-banner.jpg');
+    background-image: url('../images/skills-banner.jpg');
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
@@ -562,6 +562,8 @@ END MOBILE MENU ANIMATION CSS
 
 .carousel-wrapper {
     overflow: hidden;
+    max-width: 1920px;
+    margin: 0 auto;
 
     .carousel {
         position: relative;
@@ -585,9 +587,118 @@ END MOBILE MENU ANIMATION CSS
             z-index: 100;
             transition: transform .5s, opacity .5s, z-index .5s;
 
+            &:hover .portfolio-gradient-content {
+                opacity: 1;
+            }
+
             @media only screen and (min-width: 1024px) {
                 height: 510px;
                 width: 50%;
+            }
+        }
+
+        .portfolio-gradient-content {
+            opacity: 0;
+            will-change: opacity;
+            background-color: rgba($background-color, 0.8);
+            height: 100%;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-content: center;
+            transition: transform 0.2s, opacity 0.4s ease-in-out;
+            font-size: 1.75rem;
+            
+            .p-g-content {
+                width: 100%;
+                margin: 0 auto;
+                transition: opacity 0.4s ease-in-out;
+
+                h3 {
+                    text-align: center;
+                    font-size: 3rem;
+                    color: $primary-color;
+                    text-transform: uppercase;
+                    margin: 0 0 1rem 0;
+                    font-weight: 900;
+                }
+
+                @media only screen and (min-width: 1024px) {
+                    width: 60%;
+                }
+            }
+
+            .portfolio-overflow-list {
+                display: flex;
+                justify-content: space-evenly;
+            }
+            
+            ul {
+                list-style: none;
+                text-align: center;
+                line-height: 30px;
+                margin: 0;
+                padding: 0;
+            }
+
+            .portfolio-links {
+                display: flex;
+                justify-content: center;
+                width: 50%;
+                margin: 1rem auto 0 auto;
+
+                li {
+                    width: 50%;
+                }
+
+                a {
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+    
+                    img {
+                        display: inline-block;
+                        margin-right: .5rem;
+                    }
+                }
+    
+                & a:link,
+                & a:visited {
+                    color: whitesmoke;
+                    text-decoration: none;
+                }
+
+                .portfolio-web {
+                    img {
+                        width: 20%;
+                    }
+                }
+
+                .portfolio-git {
+                    img {
+                        color: whitesmoke;
+                        width: 18%;
+                    }
+                }
+                .portfolio-figma {
+                    
+                    img {
+                        width: 14%;
+                    }
+                }
+
+                @media only screen and (min-width: 1024px) {
+                    .portfolio-web {
+                        img {
+                            width: 18%;
+                        }
+                    }
+                }
+            }
+
+            @media only screen and (min-width: 1024px) {
+                font-size: 1rem;
             }
         }
 
@@ -603,8 +714,8 @@ END MOBILE MENU ANIMATION CSS
             background-image: url('../images/opalescence.jpg');
         }
 
-        #cyberpunk {
-            background-image: url('../images/main-banner.jpg');
+        #whats-going-on {
+            background-image: url('../images/whats-going-on.jpg');
         }
 
         .carousel__photo.initial,
@@ -643,7 +754,6 @@ END MOBILE MENU ANIMATION CSS
 
         .carousel__button--prev,
         .carousel__button--next {
-            display: none;
             position: absolute;
             top: 50%;
             width: 3rem;
@@ -655,10 +765,6 @@ END MOBILE MENU ANIMATION CSS
             background-repeat: no-repeat;
             cursor: pointer;
             z-index: 1001;
-
-            @media only screen and (min-width: 1024px) {
-                display: block;
-            }
         }
 
         .carousel__button--prev {
