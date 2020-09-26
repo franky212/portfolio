@@ -45,11 +45,14 @@ MOBILE MENU ANIMATION CSS
     }
 
     .mobile-nav {
-        width: 65%;
+        width: 100%;
+        opacity: 1;
+        clip-path: circle(100%);
+        overflow: hidden;
 
-        .mobile-links {
-            opacity: 1;
-        }
+        // .mobile-links {
+        //     opacity: 1;
+        // }
     }
 }
 
@@ -60,13 +63,19 @@ MOBILE MENU ANIMATION CSS
 
 .mobile-nav {
     position: fixed;
-    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    left: 0;
+    opacity: 0;
     width: 0;
     height: 100%;
     z-index: 999;
     overflow: hidden;
     background-color: $background-color;
-    transition: width 0.2s ease-in-out;
+    clip-path: circle(10% at 93% 0);
+    transition: clip-path .7s ease-in-out;
+    will-change: clip-path;
 
     .nav__close {
         position: absolute;
@@ -79,20 +88,19 @@ MOBILE MENU ANIMATION CSS
         padding: 0;
         margin: 0;
         position: relative;
-        opacity: 0;
-        transition: opacity 0.4s ease-in-out;
         top: 0;
         left: 0;
         z-index: 999;
-        font-size: 2rem;
+        font-size: 4rem;
+        text-transform: uppercase;
+        color: $primary-color;
         list-style: none;
+        font-weight: 900;
+        text-align: center;
 
         li {
             margin: 4rem 0 4rem 0;
             padding: 2rem;
-            color: white;
-            font-weight: 700;
-            opacity: 1!important;
         }
     }
 
@@ -643,6 +651,8 @@ END MOBILE MENU ANIMATION CSS
             }
 
             .portfolio-links {
+                position: relative;
+                z-index: 999;
                 display: flex;
                 justify-content: center;
                 width: 50%;
@@ -656,6 +666,7 @@ END MOBILE MENU ANIMATION CSS
                     display: flex;
                     align-items: center;
                     justify-content: center;
+                    padding: 1rem;
     
                     img {
                         display: inline-block;
@@ -693,6 +704,10 @@ END MOBILE MENU ANIMATION CSS
                         img {
                             width: 18%;
                         }
+                    }
+
+                    a {
+                        padding: 0;
                     }
                 }
             }

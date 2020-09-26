@@ -122,6 +122,10 @@ import '../styles/styles.scss';
     }
 
     function handleSwipe( isRightSwipe, e ) {
+        console.log( e );
+        if( e.target.href ) {
+            window.open( e.target.href, '_blank' );
+        }
         if( dist === 0 ) {
             e.preventDefault()
         }
