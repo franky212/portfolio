@@ -6,6 +6,26 @@ import '../styles/styles.scss';
 
     const body = document.querySelector( '.page_body' );
     const bannerHeadline = document.querySelector( '#banner-headline' );
+    const portfolioLink = document.querySelector( '#portfolio-cta' );
+    const portfolio = document.querySelector( '#portfolio' );
+    const links = document.querySelectorAll( '.jump' );
+    
+    for( let i = 0; i < links.length; i++ ) {
+        links[i].addEventListener( 'click', e => {
+            e.preventDefault();
+            window.scrollTo( {
+                top: elementPosition( document.querySelector( links[i].hash ) ),
+                behavior: 'smooth'
+            } );
+        } );
+    }
+
+    function elementPosition( el ) {
+        if( el === null ) {
+            return;
+        }
+        return window.pageYOffset + el.getBoundingClientRect().top;
+    }
 
     // ANIMATION CODE
     // NOTE: Should find a better solution then to use code for animations
@@ -122,7 +142,6 @@ import '../styles/styles.scss';
     }
 
     function handleSwipe( isRightSwipe, e ) {
-        console.log( e );
         if( e.target.href ) {
             window.open( e.target.href, '_blank' );
         }

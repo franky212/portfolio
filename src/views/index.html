@@ -28,10 +28,10 @@
                     </svg>
             </a>
             <ul class="mobile-links">
-                <li>Home</li>
-                <li>About Me</li>
-                <li>Portfolio</li>
-                <li>Contact Me</li>
+                <a class="jump" href="#home"><li>Home</li></a>
+                <a class="jump" href="#about-me"><li>About Me</li></a>
+                <a class="jump" href="#portfolio"><li>Portfolio</li></a>
+                <a class="jump" href="#contact-me"><li>Contact Me</li></a>
             </ul>
         </div>
         <div class="page_body">
@@ -39,7 +39,7 @@
                 <nav id="desktop-menu">
                     <div class="container">
                         <div id="main-nav">
-                            <p id="nav-logo">Frank Delaguila</p>
+                            <a href="#home" id="nav-logo"><p>Frank Delaguila</p></a>
                             <a href="#nav" class="nav__open" role="button" aria-expanded="false" aria-controls="menu">
                                 <svg class="menuicon" xmlns="http://www.w3.org/2000/svg" width="65" height="65" viewBox="0 0 50 50">
                                 <title>Open Menu</title>
@@ -52,17 +52,18 @@
                                 </svg>
                             </a>
                             <ul id="nav-links">
-                                <a href="#"><li>Home</li></a>
-                                <a href="#"><li>About Me</li></a>
-                                <a href="#"><li>Portfolio</li></a>
-                                <a href="#" id="contact-cta" class="button fill"><li>Contact Me</li></a>
+                                <a class="jump" href="#home"><li>Home</li></a>
+                                <a class="jump" href="#about-me"><li>About Me</li></a>
+                                <a class="jump" href="#portfolio"><li>Portfolio</li></a>
+                                <a class="jump" href="#contact-me"><li>Contact Me</li></a>
                             </ul>
                         </div>
                     </div>
                 </nav>
                 <div class="banner-gradient"></div>
-                <div class="container">
-                    <h1 id="banner-headline" class="animate__animated">Front End Web Developer<br/>& Designer</h1>
+                <div id="banner-headline" class="container animate__animated">
+                    <h1>Front End Web Developer<br/>& Designer</h1>
+                    <a href="#portfolio" id="portfolio-cta" class="button fill jump">View Portfolio</a>
                 </div>
             </div>
 
