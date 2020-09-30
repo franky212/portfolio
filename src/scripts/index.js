@@ -6,14 +6,15 @@ import '../styles/styles.scss';
 
     const body = document.querySelector( '.page_body' );
     const bannerHeadline = document.querySelector( '#banner-headline' );
-    const portfolioLink = document.querySelector( '#portfolio-cta' );
-    const portfolio = document.querySelector( '#portfolio' );
     const links = document.querySelectorAll( '.jump' );
     
     for( let i = 0; i < links.length; i++ ) {
         links[i].addEventListener( 'click', e => {
             e.preventDefault();
-            window.scrollTo( {
+            if( html.classList.contains( 'mobile-menu__open' ) ) {
+                html.classList.remove( 'mobile-menu__open' );
+            }
+            window.scroll( {
                 top: elementPosition( document.querySelector( links[i].hash ) ),
                 behavior: 'smooth'
             } );

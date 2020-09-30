@@ -1,0 +1,45 @@
+footer {
+    background-color: rgba( white, 0.04 );
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .footer-list {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+
+        li {
+            margin: 1rem 0;
+            a {
+                display: flex;
+                color: whitesmoke;
+                justify-content: center;
+                text-decoration: none;
+                align-items: center;
+                
+                span {
+                    margin-left: 10px;
+                }
+            }
+        }
+
+        img {
+            width: 15%;
+        }
+
+        @media only screen and (min-width: 1024px) {
+            height: 75px;
+            flex-direction: row;
+
+            img {
+                width: 10%;
+            }
+        }
+    }
+}

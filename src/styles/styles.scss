@@ -1,6 +1,8 @@
 @import './base-styles/variables';
 @import './base-styles/base-styles';
-@import './base-styles/containers.scss';
+@import './base-styles/containers';
+
+@import './components/footer';
   
 .fill:before {
     content: "";
@@ -93,6 +95,11 @@ MOBILE MENU ANIMATION CSS
         list-style: none;
         font-weight: 900;
         text-align: center;
+
+        a {
+            color: whitesmoke;
+            text-decoration: none;
+        }
 
         li {
             margin: 4rem 0 4rem 0;
@@ -251,6 +258,7 @@ END MOBILE MENU ANIMATION CSS
 
         #portfolio-cta {
             display: inline-block;
+            text-align: center;
             font-weight: 300;
             background-color: $primary-color;
             color: whitesmoke;
