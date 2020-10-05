@@ -8,7 +8,7 @@
     "webpack": "cross-env NODE_ENV=production webpack",
     "start": "webpack-dev-server --open",
     "build": "cross-env NODE_ENV=production webpack && cd ./dist && surge --domain frankdelaguila-dev.surge.sh",
-    "deploy": "webpack && cd ./dist && surge --domain frankdelaguila.surge.sh",
+    "deploy": "cross-env NODE_ENV=production webpack && cd ./dist && surge --domain frankdelaguila.surge.sh",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
