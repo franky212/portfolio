@@ -1,0 +1,117 @@
+.mobile-menu__open {
+    overflow: hidden;
+
+    .page_body {
+        opacity: 0.5!important;
+    }
+
+    .mobile-nav {
+        width: 100%;
+        opacity: 1;
+        clip-path: circle(100%);
+        overflow: hidden;
+    }
+}
+
+.nav__open,
+.nav__close {
+    padding: 1rem;
+}
+
+.mobile-nav {
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    left: 0;
+    opacity: 0;
+    width: 0;
+    height: 100%;
+    z-index: 999;
+    overflow: hidden;
+    background-color: $background-color;
+    clip-path: circle(10% at 93% 0);
+    transition: clip-path .7s ease-in-out;
+    will-change: clip-path;
+
+    .nav__close {
+        position: absolute;
+        top: 0;
+        right: 0;
+        color: white;
+    }
+
+    .mobile-links {
+        padding: 0;
+        margin: 0;
+        position: relative;
+        top: 0;
+        left: 0;
+        z-index: 999;
+        font-size: 4rem;
+        text-transform: uppercase;
+        color: $primary-color;
+        list-style: none;
+        font-weight: 900;
+        text-align: center;
+
+        a {
+            color: whitesmoke;
+            text-decoration: none;
+        }
+
+        li {
+            margin: 4rem 0 4rem 0;
+            padding: 2rem;
+        }
+    }
+
+    @media only screen and (min-width: 1024px) {
+        display: none;
+    }
+}
+
+.menuicon {
+    display: block;
+    cursor: pointer;
+    color: whitesmoke;
+    
+    &__bar {
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 3;
+      stroke-linecap: round;
+    }
+    &__bar {
+      transform: rotate(0deg);
+      transform-origin: 50% 50%;
+      transition: transform .25s ease-in-out;
+    }
+}
+
+// ---------------------------
+// Active State
+// ---------------------------
+
+.nav:target,
+.nav__close {
+  
+  //animate the menu icon
+  .menuicon {
+        color:white;
+        transform: rotate(180deg);
+        &__circle {
+            stroke-dashoffset: 0;
+        }
+        &__bar:nth-child(1),
+        &__bar:nth-child(4) {
+            opacity: 0;
+        }
+        &__bar:nth-child(2) {
+            transform: rotate(45deg);
+        }
+        &__bar:nth-child(3) {
+            transform: rotate(-45deg);
+        }
+    }
+}
